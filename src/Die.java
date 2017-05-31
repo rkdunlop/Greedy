@@ -18,6 +18,13 @@ public class Die {
         return isPicked;
     }
 
+    public void setPicked() {
+        if((isPicked == null)  || !isPicked  ) {
+            isPicked = true;
+        } else isPicked = false;
+    }
+
+
     public int getValue() {
         return value;
     }
