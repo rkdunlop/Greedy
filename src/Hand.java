@@ -5,7 +5,7 @@ import java.util.Arrays;
  */
 public class Hand {
 
-    private Die[] hand = new Die[6];
+    private final Die[] hand = new Die[6];
 
     public Hand() {
         for(int i = 0; i< hand.length; i++) hand[i] = new Die();
@@ -13,8 +13,8 @@ public class Hand {
 
     public void roll() {
 
-        for(int i = 0; i < hand.length; i++) {
-            hand[i].roll();
+        for (Die aHand : hand) {
+            aHand.roll();
         }
     }
 
@@ -23,28 +23,28 @@ public class Hand {
     }
 
     public void bust() {
-        for(int i = 0; i < hand.length; i++) {
-            hand[i].bust();
+        for (Die aHand : hand) {
+            aHand.bust();
         }
     }
     public String showPicked() {
-        String str = "[";
+        StringBuilder str = new StringBuilder("[");
 
         for(int i = 0; i < (hand.length - 1); i++) {
 
-            if(hand[i].isPicked() == null || hand[i].isPicked() == false){
-                str += "-, ";
+            if(hand[i].isPicked() == null || !hand[i].isPicked()){
+                str.append("-, ");
             } else {
-                str += "*, ";
+                str.append("*, ");
             }
         }
-        if(hand[hand.length - 1].isPicked() == null || hand[hand.length - 1].isPicked() == false){
-            str += "-]";
+        if(hand[hand.length - 1].isPicked() == null || !hand[hand.length - 1].isPicked()){
+            str.append("-]");
         } else {
-            str += "*]";
+            str.append("*]");
         }
 
-        return str;
+        return str.toString();
 
     }
     public String toString() {

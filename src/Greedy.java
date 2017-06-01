@@ -39,14 +39,11 @@ public class Greedy {
         Die[] d = h.getHand();
 
         int count = 0;
-        for(int i = 0; i < d.length; i++) {
-          if(d[i].getValue() == 1 || d[i].getValue() == 5) {
-              count ++;
-          }
+        for (Die aD : d) {
+            if (aD.getValue() == 1 || aD.getValue() == 5) {
+                count++;
+            }
         }
-        if(count > 0) {
-            return false;
-        }
-        return true;
+        return count <= 0;
     }
 }
