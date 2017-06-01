@@ -6,16 +6,54 @@ import java.util.Arrays;
 public class Hand {
 
     private final Die[] hand = new Die[6];
+    private int lockCount = 0;
+    private boolean firstRoll =true;
+    private int selectionMade = 0;
 
     public Hand() {
         for(int i = 0; i< hand.length; i++) hand[i] = new Die();
     }
 
     public void roll() {
-
-        for (Die aHand : hand) {
-            aHand.roll();
+        System.out.println("First Roll : " + firstRoll);
+        for(Die d: hand) {
+            if((d.isPicked() != null) && d.isPicked()) {
+                selectionMade++;
+                System.out.println(selectionMade);
+            }
         }
+        for(Die d: hand) {
+            if((d.isPicked() != null) && d.isPicked() && !d.isLocked()) {
+                d.setLocked();
+                lockCount++;
+                //System.out.println("Lock count: " + lockCount);
+            }
+        }
+        if(lockCount == 6) {
+            for(Die d: hand) {
+                d.setLocked();
+                d.setPicked();
+            }
+        }
+
+        if(!firstRoll && (selectionMade > 0)) {
+            for (Die d : hand) {
+
+                if (!d.isLocked()) d.roll();
+            }
+            selectionMade = 0;
+        }
+        else if(firstRoll) {
+            for(Die d: hand) {
+                d.roll();
+
+            }
+            firstRoll = false;
+
+        } else {
+            System.out.println("You must select a die, to roll");
+        }
+
     }
 
     public Die[] getHand() {

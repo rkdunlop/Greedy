@@ -6,6 +6,7 @@ public class Die {
 
     private int value = 0;
     private Boolean isPicked = null;
+    private Boolean isLocked = false;
     private static final Random random = new Random();
     public Die() {
     }
@@ -20,6 +21,14 @@ public class Die {
 
     public void setPicked() {
         isPicked = (isPicked == null) || !isPicked;
+    }
+
+    public void setLocked() {
+        isLocked = ((isLocked == null) || !isLocked) && isPicked;
+    }
+
+    public Boolean isLocked() {
+        return isLocked;
     }
 
 

@@ -23,11 +23,12 @@ public class Greedy {
             if(roll.equals("roll")) {
                 p1.getHand().roll();
 
-            } else if(Integer.parseInt(roll) >= 1 && Integer.parseInt(roll) <= 6) {
+            } else if(roll.equals("1") ||roll.equals("2") ||roll.equals("3") ||roll.equals("4") ||roll.equals("5") ||roll.equals("6") ) {
                 System.out.println(Integer.parseInt(roll));
                 p1.getHand().getHand()[Integer.parseInt(roll)-1].setPicked();
             } else if(roll.equals("stop")){
                 System.out.println("Stop");
+                break;
             } else {
                 System.out.println("Enter a valid choice! (Stop, Roll, 1-6");
             }

@@ -14,9 +14,5 @@ public class Player {
         return h;
     }
 
-    public int score(Hand h){
 
-
-        return 0;
-    }
 }
