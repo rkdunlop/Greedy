@@ -19,7 +19,7 @@ public class Hand {
         for(Die d: hand) {
             if((d.isPicked() != null) && d.isPicked()) {
                 selectionMade++;
-                System.out.println(selectionMade);
+                //System.out.println(selectionMade);
             }
         }
         for(Die d: hand) {
@@ -37,6 +37,7 @@ public class Hand {
         }
 
         if(!firstRoll && (selectionMade > 0)) {
+
             for (Die d : hand) {
 
                 if (!d.isLocked()) d.roll();
@@ -53,6 +54,7 @@ public class Hand {
         } else {
             System.out.println("You must select a die, to roll");
         }
+
 
     }
 

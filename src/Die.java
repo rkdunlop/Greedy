@@ -1,8 +1,9 @@
 /*
+  Defines a dies state, and function
   Created by rdunlop on 5/30/2017.
  */
 import java.util.*;
-public class Die {
+public class Die implements Comparable<Die>{
 
     private int value = 0;
     private Boolean isPicked = null;
@@ -46,4 +47,9 @@ public class Die {
 
 
 
+
+    @Override
+    public int compareTo(Die o) {
+        return Integer.compare(value,o.value );
+    }
 }

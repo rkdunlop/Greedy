@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 /**
+ * Defines how the game greedy is played
  * Created by rdunlop on 5/30/2017.
  */
 public class Greedy {
@@ -14,37 +15,39 @@ public class Greedy {
         Player p1 = new Player();
 
 
-        while(score < 10000) {
-            System.out.println("Your hand: " +p1.getHand());
+        label:
+        while (score < 10000) {
+            System.out.println("Your hand: " + p1.getHand());
             System.out.println("Picked   : " + p1.getHand().showPicked());
             System.out.println("Enter your choice: ");
             String roll = sc.nextLine();
             roll.toLowerCase();
-            if(roll.equals("roll")) {
-                p1.getHand().roll();
-
-            } else if(roll.equals("1") ||roll.equals("2") ||roll.equals("3") ||roll.equals("4") ||roll.equals("5") ||roll.equals("6") ) {
-                System.out.println(Integer.parseInt(roll));
-                p1.getHand().getHand()[Integer.parseInt(roll)-1].setPicked();
-            } else if(roll.equals("stop")){
-                System.out.println("Stop");
-                break;
-            } else {
-                System.out.println("Enter a valid choice! (Stop, Roll, 1-6");
+            switch (roll) {
+                case "roll":
+                    p1.score();
+                    p1.getHand().roll();
+                    System.out.println("Running Score: " + p1.getHandScore());
+                    break;
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                    System.out.println(Integer.parseInt(roll));
+                    p1.getHand().getHand()[Integer.parseInt(roll) - 1].setPicked();
+                    break;
+                case "stop":
+                    System.out.println("Stop");
+                    p1.score();
+                    p1.setScore();
+                    break label;
+                default:
+                    System.out.println("Enter a valid choice! (Stop, Roll, 1-6");
+                    break;
             }
 
         }
     }
 
-    public static boolean bust(Hand h) {
-        Die[] d = h.getHand();
-
-        int count = 0;
-        for (Die aD : d) {
-            if (aD.getValue() == 1 || aD.getValue() == 5) {
-                count++;
-            }
-        }
-        return count <= 0;
-    }
 }
