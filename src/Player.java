@@ -40,21 +40,39 @@ public class Player {
         }
         Collections.sort(dice);
         System.out.println(dice.toString());
-        while (dice.size()>0) {
+        while (dice.size() > 0) {
 
-            for(int i = 0; i < dice.size(); i++) {
-                int val = dice.get(i).getValue();
-                if(val == 1) {
-                    handScore += 100;
-                    dice.remove(i);
-                } else if(val == 5) {
-                    handScore += 50;
-                    dice.remove(i);
-                } else {
-                    dice.remove(i);
-                }
+            switch ( int check){
+                case 0:
+                    for (int i = 0; i < dice.size() - 1; i++) {
+                        int val = dice.get(i).getValue();
+                        int val2 = dice.get(i + 1).getValue();
+                        if (val2 != val + 1) {
+                            break;
+                        }
+                    }
+                    handScore += 1500;
+                    dice.clear();
+                    check = 1;
+                    break;
+                case 1:
+                    for (int i = 0; i < dice.size(); i++) {
+                        int val = dice.get(i).getValue();
+                        if (val == 1) {
+                            handScore += 100;
+                            dice.remove(i);
+                        } else if (val == 5) {
+                            handScore += 50;
+                            dice.remove(i);
+                        } else {
+                            dice.remove(i);
+                        }
 
+                    }
+                    break;
             }
+            //check for straight
+
 
         }
     }
