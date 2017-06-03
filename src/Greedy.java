@@ -19,14 +19,16 @@ public class Greedy {
         while (score < 10000) {
             System.out.println("Your hand: " + p1.getHand());
             System.out.println("Picked   : " + p1.getHand().showPicked());
+            System.out.println("Score this hand: " + p1.getHandScore());
             System.out.println("Enter your choice: ");
             String roll = sc.nextLine();
             roll.toLowerCase();
             switch (roll) {
                 case "roll":
+                    p1.selectDiceToScore();
                     p1.score();
                     p1.getHand().roll();
-                    System.out.println("Running Score: " + p1.getHandScore());
+                    //System.out.println("Running Score: " + p1.getHandScore());
                     break;
                 case "1":
                 case "2":
