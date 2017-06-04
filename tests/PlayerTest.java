@@ -52,6 +52,8 @@ public class PlayerTest {
         assertThat(result,equalTo(500));
     }
 
+
+
     @Test
     public void threeSixs() throws Exception {
         Player player = new Player();
@@ -66,6 +68,126 @@ public class PlayerTest {
 
         assertThat(result,equalTo(600));
     }
+
+    @Test
+    public void fourSixs() throws Exception {
+        Player player = new Player();
+        Field f = player.getClass().getDeclaredField("dice");
+        f.setAccessible(true);
+        ArrayList<Die> d = (ArrayList<Die>) f.get(player);
+        d.add(new Die(6));
+        d.add(new Die(6));
+        d.add(new Die(6));
+        d.add(new Die(6));
+
+        int result = player.score();
+
+        assertThat(result,equalTo(1200));
+    }
+
+    @Test
+    public void fiveSixs() throws Exception {
+        Player player = new Player();
+        Field f = player.getClass().getDeclaredField("dice");
+        f.setAccessible(true);
+        ArrayList<Die> d = (ArrayList<Die>) f.get(player);
+        d.add(new Die(6));
+        d.add(new Die(6));
+        d.add(new Die(6));
+        d.add(new Die(6));
+        d.add(new Die(6));
+
+        int result = player.score();
+
+        assertThat(result,equalTo(2400));
+    }
+
+    @Test
+    public void sixSixs() throws Exception {
+        Player player = new Player();
+        Field f = player.getClass().getDeclaredField("dice");
+        f.setAccessible(true);
+        ArrayList<Die> d = (ArrayList<Die>) f.get(player);
+        d.add(new Die(6));
+        d.add(new Die(6));
+        d.add(new Die(6));
+        d.add(new Die(6));
+        d.add(new Die(6));
+        d.add(new Die(6));
+
+        int result = player.score();
+
+        assertThat(result,equalTo(4800));
+    }
+
+    //************fives************************//
+    @Test
+    public void threeFives() throws Exception {
+        Player player = new Player();
+        Field f = player.getClass().getDeclaredField("dice");
+        f.setAccessible(true);
+        ArrayList<Die> d = (ArrayList<Die>) f.get(player);
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+
+        int result = player.score();
+
+        assertThat(result,equalTo(500));
+    }
+
+    @Test
+    public void fourFives() throws Exception {
+        Player player = new Player();
+        Field f = player.getClass().getDeclaredField("dice");
+        f.setAccessible(true);
+        ArrayList<Die> d = (ArrayList<Die>) f.get(player);
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+
+        int result = player.score();
+
+        assertThat(result,equalTo(1000));
+    }
+
+    @Test
+    public void fiveFives() throws Exception {
+        Player player = new Player();
+        Field f = player.getClass().getDeclaredField("dice");
+        f.setAccessible(true);
+        ArrayList<Die> d = (ArrayList<Die>) f.get(player);
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+
+        int result = player.score();
+
+        assertThat(result,equalTo(2000));
+    }
+
+    @Test
+    public void sixFives() throws Exception {
+        Player player = new Player();
+        Field f = player.getClass().getDeclaredField("dice");
+        f.setAccessible(true);
+        ArrayList<Die> d = (ArrayList<Die>) f.get(player);
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+        d.add(new Die(5));
+
+        int result = player.score();
+
+        assertThat(result,equalTo(4000));
+    }
+
+
     @Test
     public void scoreOneAndFive() throws Exception {
         Player player = new Player();
