@@ -41,17 +41,18 @@ public class Player {
     }
 
     public int score() {
-        System.out.println("I'm scoring");
+
         int check = 0;
         Collections.sort(dice);
-        System.out.println(dice.toString());
+
 
         int count6 = 0;
         int count5 = 0;
-        int count52 = 0;
+
 
         while (dice.size() > 0) {
-            System.out.println("The Case is : " + check);
+            //System.out.println("The Case is : " + check);
+            //System.out.println(dice.toString());
             label:
             switch (check) {
                 case 0:
@@ -86,27 +87,16 @@ public class Player {
 
                     if (count6 == 6) {
                         handScore += 4800;
+                        cleanup(6);
                     } else if (count6 == 5) {
                         handScore += 2400;
+                        cleanup(6);
                     } else if (count6 == 4) {
                         handScore += 1200;
+                        cleanup(6);
                     } else if (count6 == 3) {
                         handScore += 600;
-                    } else {
-                        check = 2;
-                        break;
-                    }
-
-                    int count2 = 0;
-                    for (int i = 0; i < dice.size(); i++) {
-                        if (dice.get(i).getValue() == 6) {
-                            dice.remove(i);
-                            count2++;
-                        }
-                        if (count6 == count2) {
-                            check = 2;
-                            break;
-                        }
+                        cleanup(6);
                     }
                     check = 2;
                     break;
@@ -121,27 +111,26 @@ public class Player {
 
                     if (count5 == 6) {
                         handScore += 4000;
+                        cleanup(5);
+                        break;
                     } else if (count5 == 5) {
                         handScore += 2000;
+                        cleanup(5);
+                        break;
                     } else if (count5 == 4) {
                         handScore += 1000;
+                        cleanup(5);
+                        break;
                     } else if (count5 == 3) {
                         handScore += 500;
-
+                        cleanup(5);
                         System.out.println("Hand score should be 500 - actual " + handScore);
-                    }
+                        break;
 
-                    for (int i = 0; i < dice.size(); i++) {
-                        if (dice.get(i).getValue() == 5) {
-                            dice.remove(i);
-                            count52++;
-                        }
-                        if (count5 == count52) {
-                            check = 3;
-                            System.out.println("breaking in the count = count");
-                            break label;
-                        }
+
                     }
+                    check =3;
+                    break;
 
 
 
@@ -156,27 +145,16 @@ public class Player {
 
                     if (count == 6) {
                         handScore += 3200;
+                        cleanup(4);
                     } else if (count == 5) {
                         handScore += 1600;
+                        cleanup(4);
                     } else if (count == 4) {
                         handScore += 800;
+                        cleanup(4);
                     } else if (count == 3) {
                         handScore += 400;
-                    } else {
-                        check = 4;
-                        break;
-                    }
-
-                    count2 = 0;
-                    for (int i = 0; i < dice.size(); i++) {
-                        if (dice.get(i).getValue() == 4) {
-                            dice.remove(i);
-                            count2++;
-                        }
-                        if (count == count2) {
-                            check = 4;
-                            break;
-                        }
+                        cleanup(4);
                     }
                     check = 4;
                     break;
@@ -191,27 +169,16 @@ public class Player {
 
                     if (count == 6) {
                         handScore += 2400;
+                        cleanup(3);
                     } else if (count == 5) {
                         handScore += 1200;
+                        cleanup(3);
                     } else if (count == 4) {
                         handScore += 600;
+                        cleanup(3);
                     } else if (count == 3) {
                         handScore += 300;
-                    } else {
-                        check = 5;
-                        break;
-                    }
-
-                    count2 = 0;
-                    for (int i = 0; i < dice.size(); i++) {
-                        if (dice.get(i).getValue() == 3) {
-                            dice.remove(i);
-                            count2++;
-                        }
-                        if (count == count2) {
-                            check = 5;
-                            break;
-                        }
+                        cleanup(3);
                     }
                     check = 5;
                     break;
@@ -226,27 +193,16 @@ public class Player {
 
                     if (count == 6) {
                         handScore += 1600;
+                        cleanup(2);
                     } else if (count == 5) {
                         handScore += 800;
+                        cleanup(2);
                     } else if (count == 4) {
                         handScore += 400;
+                        cleanup(2);
                     } else if (count == 3) {
                         handScore += 200;
-                    } else {
-                        check = 6;
-                        break;
-                    }
-
-                    count2 = 0;
-                    for (int i = 0; i < dice.size(); i++) {
-                        if (dice.get(i).getValue() == 2) {
-                            dice.remove(i);
-                            count2++;
-                        }
-                        if (count == count2) {
-                            check = 6;
-                            break;
-                        }
+                        cleanup(2);
                     }
                     check = 6;
                     break;
@@ -261,32 +217,21 @@ public class Player {
 
                     if (count == 6) {
                         handScore += 8000;
+                        cleanup(1);
                     } else if (count == 5) {
                         handScore += 4000;
+                        cleanup(1);
                     } else if (count == 4) {
                         handScore += 2000;
+                        cleanup(1);
                     } else if (count == 3) {
                         handScore += 1000;
-                    } else {
-                        check = 7;
-                        break;
-                    }
-
-                    count2 = 0;
-                    for (int i = 0; i < dice.size(); i++) {
-                        if (dice.get(i).getValue() == 1) {
-                            dice.remove(i);
-                            count2++;
-                        }
-                        if (count == count2) {
-                            check = 7;
-                            break;
-                        }
+                        cleanup(1);
                     }
                     check = 7;
                     break;
                 case 7:
-                    System.out.println("Checking 3 pairs");
+                    //System.out.println("Checking 3 pairs");
                     if (dice.size() != 6) {
                         check = 8;
                         break;
@@ -327,11 +272,15 @@ public class Player {
     }
 
     public void cleanup(int elementToRemove) {
-        for (int i = 0; i < dice.size(); i++) {
+        //System.out.println(dice.size());
+        for (int i = dice.size()-1; i >= 0; i--) {
+            //System.out.println("i: " + i);
             if (dice.get(i).getValue() == elementToRemove) {
+                //System.out.println("Removing: " + i);
                 dice.remove(i);
 
             }
         }
+        //.out.println(dice.size());
     }
 }
